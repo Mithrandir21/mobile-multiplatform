@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Demo App</string>
+
+
+    <!-- PREFERENCES -->
+    <string name="main_preference_dev_section_title_key" translatable="false">main_developer_category</string>
+    <string name="main_preference_dev_section_title_label">Developer Preferences</string>
+
+    <string name="main_preference_dev_remote_config_key" translatable="false">main_dev_remote</string>
+    <string name="main_preference_dev_remote_config_label">Remote Preferences</string>
+
+    <string name="main_preference_help_section_title_key" translatable="false">main_help_category</string>
+    <string name="main_preference_help_section_title_label">Help</string>
+
+    <string name="main_preference_help_feedback_title_key" translatable="false">main_feedback</string>
+    <string name="main_preference_help_feedback_title_label">Send feedback</string>
+    <string name="main_preference_help_feedback_title_summary">Report technical issues or suggest new features</string>
+
+
+    <!-- Developer Preferences -->
+    <string name="preferences_toolbar_action">Preferences</string>
+    <string name="dev_preference_remote_environment_key" translatable="false">dev_remote</string>
+    <string name="dev_preference_remote_environment_title">Select Environment</string>
+
+    <string name="dev_preference_remote_environment_selection_title">Environments</string>
+    <string name="dev_preference_remote_environment_selection_neutral">@android:string/cancel</string>
+    <string name="dev_preference_remote_environment_selection_positive">@android:string/ok</string>
+
+
+    <string name="intermediary_step">Intermediary Step</string>
+    <string name="album_id">Album ID: %1$d</string>
+    <string name="album_user_id">User ID: %1$d</string>
+    <string name="album_name">Album Name: %1$s</string>
+    <string name="no_album_found_for_id">No album found for ID: %1$d</string>
+
+
+    <!-- END PREFERENCES -->
+</resources>

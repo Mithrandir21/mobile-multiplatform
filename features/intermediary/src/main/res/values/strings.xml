@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="intermediary_feature_step_label">Intermediary Feature Step</string>
+    <string name="intermediary_feature_step_explanation">This intermediary step is not part of the App module, but separated out into a Feature module so that it can added to the app if the feature is required via Dynamic Features.</string>
+    <string name="next">Next</string>
+</resources>

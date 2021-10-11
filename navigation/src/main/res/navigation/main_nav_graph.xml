@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainNavGraph"
+    app:startDestination="@id/albumList">
+
+    <fragment
+        android:id="@+id/albumList"
+        android:name="com.demo.ui.albums.list.FragmentAlbumList"
+        android:label="Album List">
+
+        <action
+            android:id="@+id/goToAlbumDetails"
+            app:destination="@id/albumDetails"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
+            app:popUpTo="@id/albumList"
+            app:popUpToInclusive="false" />
+
+        <action
+            android:id="@+id/goToIntermediaryStep"
+            app:destination="@id/intermediaryStep"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/intermediaryStep"
+        android:name="com.demo.feature.intermediary.FragmentIntermediary"
+        android:label="Intermediary Step">
+
+        <argument
+            android:name="albumId"
+            app:argType="integer" />
+
+        <action
+            android:id="@+id/goToAlbumDetails"
+            app:destination="@id/albumDetails"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
+            app:popUpTo="@id/albumList"
+            app:popUpToInclusive="false" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/albumDetails"
+        android:name="com.demo.ui.albums.details.FragmentAlbumDetails"
+        android:label="Album Details">
+
+        <argument
+            android:name="albumId"
+            app:argType="integer" />
+
+        <deepLink
+            android:id="@+id/albumLandingDeepLink"
+            app:uri="demo://album/{albumId}" />
+
+    </fragment>
+
+</navigation>

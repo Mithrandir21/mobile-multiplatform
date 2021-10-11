@@ -1,0 +1,58 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+apply from: '../versions.gradle'
+
+android {
+    compileSdkVersion compileSdkToApiVersion
+    buildToolsVersion buildToolVersion
+
+    defaultConfig {
+        minSdkVersion minSdkToApiVersion
+        targetSdkVersion targetSdkToApiVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+
+        lintOptions {
+            // Prevents builds from stopping if lint issues are found
+            abortOnError false
+        }
+
+        kotlinOptions {
+            jvmTarget = '1.8'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+        }
+    }
+
+    flavorDimensions 'client'
+    productFlavors {
+        demo {
+            dimension "client"
+        }
+        clientA {
+            dimension "client"
+        }
+        clientB {
+            dimension "client"
+        }
+    }
+}
+
+dependencies {
+    // Google
+    implementation "com.google.android.material:material:$googleMaterial"
+}

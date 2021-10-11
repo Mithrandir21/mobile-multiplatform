@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        app:key="@string/main_preference_dev_section_title_key"
+        app:title="@string/main_preference_dev_section_title_label">
+
+        <Preference
+            app:fragment="com.demo.ui.preferences.remote.RemotePreferencesFragment"
+            app:key="@string/main_preference_dev_remote_config_key"
+            app:title="@string/main_preference_dev_remote_config_label" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="@string/main_preference_help_section_title_key"
+        app:title="@string/main_preference_help_section_title_label">
+
+        <Preference
+            app:key="@string/main_preference_help_feedback_title_key"
+            app:summary="@string/main_preference_help_feedback_title_summary"
+            app:title="@string/main_preference_help_feedback_title_label" />
+
+    </PreferenceCategory>
+
+</androidx.preference.PreferenceScreen>

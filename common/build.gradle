@@ -1,0 +1,75 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'kotlinx-serialization'
+}
+
+apply from: '../versions.gradle'
+
+android {
+    compileSdkVersion compileSdkToApiVersion
+    buildToolsVersion buildToolVersion
+
+    defaultConfig {
+        minSdkVersion minSdkToApiVersion
+        targetSdkVersion targetSdkToApiVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+
+        lintOptions {
+            // Prevents builds from stopping if lint issues are found
+            abortOnError false
+        }
+
+        kotlinOptions {
+            jvmTarget = '1.8'
+        }
+
+        buildFeatures {
+            viewBinding = true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+        }
+    }
+}
+
+dependencies {
+    // NOTE: Almost all other modules depend on this Common module, so this module cannot depend on the other modules.
+
+    // KotlinX Serialization - api so that other modules can use this dependency
+    api "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxSerialization"
+
+    // RxJava
+    implementation "io.reactivex.rxjava3:rxkotlin:$rxJava"
+    implementation "io.reactivex.rxjava3:rxandroid:$rxJavaAndroid"
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$hiltCoreVersion"
+    kapt "com.google.dagger:hilt-compiler:$hiltCoreVersion"
+    kapt "androidx.hilt:hilt-compiler:$hiltCompilerVersion"
+
+    // Date and Time
+    implementation "com.jakewharton.threetenabp:threetenabp:$threeTenABP"
+
+
+    // Unit Tests
+    testImplementation project(path: ':testing')
+    testImplementation "junit:junit:$junit"
+    testImplementation "androidx.arch.core:core-testing:$androidxCoreTesting"
+    testImplementation "org.mockito:mockito-core:$mockito"
+    testImplementation "org.mockito:mockito-inline:$mockito"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlin"
+}

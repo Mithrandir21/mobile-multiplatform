@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Dimensions -->
+    <attr name="demo_margin_padding_tiny" format="reference" />
+    <attr name="demo_margin_padding_small" format="reference" />
+    <attr name="demo_margin_padding_medium" format="reference" />
+    <attr name="demo_margin_padding_large" format="reference" />
+    <attr name="demo_margin_padding_xlarge" format="reference" />
+    <attr name="demo_margin_padding_xxlarge" format="reference" />
+
+    <attr name="demo_text_size_micro" format="reference" />
+    <attr name="demo_text_size_small" format="reference" />
+    <attr name="demo_text_size_medium" format="reference" />
+    <attr name="demo_text_size_large" format="reference" />
+    <attr name="demo_text_size_xlarge" format="reference" />
+    <attr name="demo_text_size_xxlarge" format="reference" />
+    <attr name="demo_text_size_xxxlarge" format="reference" />
+
+
+    <!-- Anims -->
+    <attr name="demo_fade_in_anim" format="reference" />
+    <attr name="demo_fade_out_anim" format="reference" />
+    <attr name="demo_slide_in_left_anim" format="reference" />
+    <attr name="demo_slide_in_right_anim" format="reference" />
+    <attr name="demo_slide_out_left_anim" format="reference" />
+    <attr name="demo_slide_out_right_anim" format="reference" />
+
+
+    <!-- Colors -->
+    <attr name="demo_color_white" format="reference" />
+    <attr name="demo_color_black" format="reference" />
+
+</resources>

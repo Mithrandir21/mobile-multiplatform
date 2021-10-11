@@ -1,0 +1,11 @@
+include ':navigation'
+include ':common'
+include ':features:intermediary'
+include ':theming'
+include ':logging'
+include ':base'
+include ':testing'
+include ':domain'
+include ':remote'
+include ':app'
+rootProject.name = "Demo"

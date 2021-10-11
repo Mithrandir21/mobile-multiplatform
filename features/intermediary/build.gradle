@@ -1,0 +1,99 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+apply from: '../../versions.gradle'
+
+android {
+    compileSdkVersion compileSdkToApiVersion
+    buildToolsVersion buildToolVersion
+
+    defaultConfig {
+        minSdkVersion minSdkToApiVersion
+        targetSdkVersion targetSdkToApiVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+
+        lintOptions {
+            // Prevents builds from stopping if lint issues are found
+            abortOnError false
+        }
+
+        kotlinOptions {
+            jvmTarget = '1.8'
+        }
+
+        buildFeatures {
+            viewBinding = true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+        }
+    }
+
+    flavorDimensions 'client'
+    productFlavors {
+        demo {
+            dimension "client"
+
+            missingDimensionStrategy 'variant', 'core'
+        }
+        clientA {
+            dimension "client"
+
+            missingDimensionStrategy 'variant', 'deviation'
+        }
+        clientB {
+            dimension "client"
+
+            missingDimensionStrategy 'variant', 'deviation'
+        }
+    }
+}
+
+dependencies {
+    implementation project(path: ':base')
+    implementation project(path: ':common')
+    implementation project(path: ':domain')
+    implementation project(path: ':logging')
+    implementation project(path: ':theming')
+    implementation project(path: ':navigation')
+
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // Android X
+    implementation "androidx.core:core-ktx:$androidxCore"
+    implementation "androidx.appcompat:appcompat:$androidxAppcompat"
+    implementation "androidx.constraintlayout:constraintlayout:$androidxConstraintlayout"
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$hiltCoreVersion"
+    kapt "com.google.dagger:hilt-compiler:$hiltCoreVersion"
+    kapt "androidx.hilt:hilt-compiler:$hiltCompilerVersion"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$hiltCoreVersion"
+    kaptAndroidTest "com.google.dagger:hilt-compiler:$hiltCoreVersion"
+
+    // RxJava
+    implementation "io.reactivex.rxjava3:rxkotlin:$rxJava"
+    implementation "io.reactivex.rxjava3:rxandroid:$rxJavaAndroid"
+
+    // Navigation Component
+    implementation "androidx.navigation:navigation-fragment-ktx:$navComponent"
+    implementation "androidx.navigation:navigation-ui-ktx:$navComponent"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$navComponent"
+}

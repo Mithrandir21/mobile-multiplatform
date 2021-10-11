@@ -1,0 +1,141 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'kotlinx-serialization'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+apply from: '../versions.gradle'
+
+// semantic versioning, from which both versionCode and versionName is derived
+def versionMajor = 0 // 1 space
+def versionMinor = 0 // 2 spaces
+def versionPatch = 1 // 2 spaces
+def versionBuild = 0 // 2 spaces
+
+android {
+    compileSdkVersion compileSdkToApiVersion
+    buildToolsVersion buildToolVersion
+
+    defaultConfig {
+        applicationId "com.demo.default"
+        minSdkVersion minSdkToApiVersion
+        targetSdkVersion targetSdkToApiVersion
+        versionCode versionMajor * 1000000 + versionMinor * 10000 + versionPatch * 100 + versionBuild
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        lintOptions {
+            // Prevents builds from stopping if lint issues are found
+            abortOnError false
+
+            // This is necessary for the Hilt enableExperimentalClasspathAggregation flag
+            checkReleaseBuilds = false
+        }
+
+        kotlinOptions {
+            jvmTarget = '1.8'
+        }
+
+        buildFeatures {
+            viewBinding = true
+        }
+    }
+
+    hilt {
+        /*
+         * Dagger/Hilt needs this flag enabled so that it can construct dependencies in transient modules.
+         * See: https://github.com/google/dagger/issues/1991
+         */
+        enableExperimentalClasspathAggregation = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+        }
+    }
+
+    flavorDimensions 'client'
+    productFlavors {
+        demo {
+            dimension "client"
+
+            missingDimensionStrategy 'variant', 'core'
+        }
+        clientA {
+            dimension "client"
+            applicationId "com.demo.clientA"
+
+            missingDimensionStrategy 'variant', 'deviation'
+        }
+        clientB {
+            dimension "client"
+            applicationId "com.demo.clientB"
+
+            missingDimensionStrategy 'variant', 'deviation'
+        }
+    }
+}
+
+dependencies {
+
+    // General Modules
+    implementation project(path: ':base',)
+    implementation project(path: ':common')
+    implementation project(path: ':domain')
+    implementation project(path: ':logging')
+    implementation project(path: ':theming')
+    implementation project(path: ':navigation')
+
+    // Feature Modules
+    implementation project(path: '::features:intermediary')
+
+
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // Android X
+    implementation "androidx.core:core-ktx:$androidxCore"
+    implementation "androidx.appcompat:appcompat:$androidxAppcompat"
+    implementation "androidx.constraintlayout:constraintlayout:$androidxConstraintlayout"
+    implementation "androidx.preference:preference-ktx:$androidXpreferences"
+
+    // Google
+    implementation "com.google.android.material:material:$googleMaterial"
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$hiltCoreVersion"
+    kapt "com.google.dagger:hilt-compiler:$hiltCoreVersion"
+    kapt "androidx.hilt:hilt-compiler:$hiltCompilerVersion"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$hiltCoreVersion"
+    kaptAndroidTest "com.google.dagger:hilt-compiler:$hiltCoreVersion"
+
+    // RxJava
+    implementation "io.reactivex.rxjava3:rxkotlin:$rxJava"
+    implementation "io.reactivex.rxjava3:rxandroid:$rxJavaAndroid"
+
+    // Navigation Component
+    implementation "androidx.navigation:navigation-fragment-ktx:$navComponent"
+    implementation "androidx.navigation:navigation-ui-ktx:$navComponent"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$navComponent"
+
+
+    // Unit Tests
+    testImplementation project(path: ':testing')
+    testImplementation "junit:junit:$junit"
+    testImplementation "androidx.arch.core:core-testing:$androidxCoreTesting"
+    testImplementation "org.mockito:mockito-core:$mockito"
+    testImplementation "org.mockito:mockito-inline:$mockito"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlin"
+}
