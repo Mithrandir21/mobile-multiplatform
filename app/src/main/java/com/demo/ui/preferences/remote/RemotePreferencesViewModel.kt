@@ -39,7 +39,7 @@ class RemotePreferencesViewModel @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .doOnTerminate { stopProgress(ActionType.LoadingRemoteEnvironment) }
             .debugLog(logger)
-            .subscribe(viewData::postValue) { error.postValue(it to ActionType.LoadingRemoteEnvironment) }
+            .subscribe(viewData::postValue) { reportError(it, ActionType.LoadingRemoteEnvironment) }
             .addToDisposable()
 
     fun setRemoteEnvironment(environment: RemoteConfig) =
@@ -51,7 +51,7 @@ class RemotePreferencesViewModel @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .doOnTerminate { stopProgress(ActionType.SetRemoteEnvironment) }
             .debugLog(logger)
-            .subscribe(viewData::postValue) { error.postValue(it to ActionType.SetRemoteEnvironment) }
+            .subscribe(viewData::postValue) { reportError(it, ActionType.SetRemoteEnvironment) }
             .addToDisposable()
 
 

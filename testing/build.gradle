@@ -41,6 +41,7 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':logging')
 
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -49,12 +50,24 @@ dependencies {
     implementation "io.reactivex.rxjava3:rxkotlin:$rxJava"
     implementation "io.reactivex.rxjava3:rxandroid:$rxJavaAndroid"
 
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$hiltCoreVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$hiltCoreVersion"
+    kapt "com.google.dagger:hilt-compiler:$hiltCoreVersion"
+    kapt "androidx.hilt:hilt-compiler:$hiltCompilerVersion"
+    implementation "com.google.dagger:hilt-android-testing:$hiltCoreVersion"
+
     // Unit Testing
     implementation "junit:junit:$junit"
     implementation "androidx.arch.core:core-testing:$androidxCoreTesting"
     implementation "org.mockito:mockito-core:$mockito"
     implementation "org.mockito:mockito-inline:$mockito"
     implementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlin"
+
+    // Espresso Testing
+    implementation "androidx.test.espresso:espresso-core:$espresso"
+    implementation "androidx.test.espresso:espresso-contrib:$espresso"
+    implementation "androidx.test.espresso:espresso-idling-resource:$espresso"
 
     // Unit Testing
     testImplementation "junit:junit:$junit"

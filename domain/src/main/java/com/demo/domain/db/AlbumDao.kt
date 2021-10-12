@@ -17,8 +17,8 @@ interface AlbumDao {
     @Query("SELECT * FROM album WHERE album.id IS :id")
     fun getAlbum(id: Int): Flowable<List<Album>>
 
-    /** Returns all the [Album]s in the database. */
-    @Query("SELECT * FROM album")
+    /** Returns all the [Album]s in the database, ordered by their [Album.title] in ascending order. */
+    @Query("SELECT * FROM album ORDER BY title ASC")
     fun observeAllAlbums(): Flowable<List<Album>>
 
     /** Adds the [Album] to the database. */

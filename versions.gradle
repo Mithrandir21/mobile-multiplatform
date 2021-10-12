@@ -12,6 +12,7 @@ ext {
     googleMaterial = '1.3.0'
     androidxConstraintlayout = '2.0.4'
     androidXpreferences = '1.1.1'
+    androidXfragment = '1.3.6'
 
     hiltCoreVersion = '2.33-beta'
     hiltCompilerVersion = '1.0.0-alpha03'
@@ -36,6 +37,8 @@ ext {
 
     junit = '4.13.2'
     androidxCoreTesting = '2.1.0'
-    mockito = '3.5.13'
+    mockito = '3.9.0'
     mockitoKotlin = '2.2.0'
+
+    espresso = '3.4.0'
 }

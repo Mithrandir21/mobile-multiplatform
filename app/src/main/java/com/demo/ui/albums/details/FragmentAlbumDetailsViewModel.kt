@@ -38,7 +38,7 @@ class FragmentAlbumDetailsViewModel @Inject constructor(
             .doOnNext { logger.log { "Album data: $it" } }
             .doOnNext { stopProgress(ActionType.LoadingAlbum) }
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(viewData::postValue) { error.postValue(it to ActionType.LoadingAlbum) }
+            .subscribe(viewData::postValue) { reportError(it, ActionType.LoadingAlbum) }
             .addToDisposable()
 
 

@@ -10,13 +10,12 @@
 
     <TextView
         android:id="@+id/detailsAlbumIdLabel"
-        style="@style/Theme.Demo.Default.Text.Title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/detailsAlbumUserIdLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="Album ID: 1" />
+        tools:text="@string/album_id" />
 
     <TextView
         android:id="@+id/detailsAlbumUserIdLabel"
@@ -26,7 +25,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="User ID: 1" />
+        tools:text="@string/album_user_id" />
 
     <TextView
         android:id="@+id/detailsAlbumNameLabel"
@@ -35,7 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailsAlbumUserIdLabel"
-        tools:text="Name: Album X, Y and Z" />
+        tools:text="@string/album_name" />
 
     <ProgressBar
         android:id="@+id/albumDetailsProgressBar"

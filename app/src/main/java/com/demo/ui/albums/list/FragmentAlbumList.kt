@@ -7,8 +7,12 @@ import androidx.core.view.isVisible
 import com.demo.R
 import com.demo.base.BaseFragment
 import com.demo.databinding.FragmentAlbumListBinding
+import com.demo.logging.debugLog
+import com.demo.logging.error
+import com.demo.testing.idling.CountingIdler
 import com.demo.ui.albums.list.FragmentAlbumListViewModel.Data
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class FragmentAlbumList : BaseFragment<FragmentAlbumListBinding>(R.layout.fragment_album_list), AlbumAdapterInterface {
@@ -16,6 +20,9 @@ class FragmentAlbumList : BaseFragment<FragmentAlbumListBinding>(R.layout.fragme
     private val viewModel: FragmentAlbumListViewModel by lazy { viewModel() }
 
     private val adapter = AlbumAdapter(this)
+
+    @Inject
+    lateinit var idler: CountingIdler
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,6 +53,18 @@ class FragmentAlbumList : BaseFragment<FragmentAlbumListBinding>(R.layout.fragme
                 is Data.AlbumsData -> adapter.setDataList(data.albums)
             }
         }
+
+        viewModel.observeProgressFlowable()
+            .debugLog(logger, "FragmentAlbumList Progress Subscription")
+            .subscribe({ (loading, action) ->
+                logger.error { "action: $action" }
+
+                when (loading) {
+                    true -> idler.increment()
+                    false -> idler.decrement()
+                }
+            }) { logger.error(it) { "" } }
+            .addToDisposable()
 
 
         /**

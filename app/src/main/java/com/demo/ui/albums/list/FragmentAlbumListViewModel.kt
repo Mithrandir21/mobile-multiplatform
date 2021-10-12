@@ -30,7 +30,7 @@ class FragmentAlbumListViewModel @Inject constructor(
             .doOnNext { logger.log { "Album data retrieved" } }
             .doOnNext { stopProgress(ActionType.LoadingAlbums) }
             .debugLog(logger, "Observing Albums from Dao")
-            .subscribe(viewData::postValue) { error.postValue(it to ActionType.LoadingAlbums) }
+            .subscribe(viewData::postValue) { reportError(it, ActionType.LoadingAlbums) }
             .addToDisposable()
 
     fun refreshAlbums() =
@@ -40,7 +40,7 @@ class FragmentAlbumListViewModel @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .doOnTerminate { stopProgress(ActionType.RefreshingAlbums) }
             .debugLog(logger, "Refreshing Albums")
-            .subscribe({ logger.log { "Successfully refreshed data" } }) { error.postValue(it to ActionType.RefreshingAlbums) }
+            .subscribe({ logger.log { "Successfully refreshed data" } }) { reportError(it, ActionType.RefreshingAlbums) }
             .addToDisposable()
 
 
