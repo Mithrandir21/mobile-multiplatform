@@ -7,12 +7,14 @@ ext {
     kotlinVersion = '1.4.32'
     kotlinSerialization = '1.0.1'
 
-    androidxCore = '1.3.2'
-    androidxAppcompat = '1.2.0'
-    googleMaterial = '1.3.0'
-    androidxConstraintlayout = '2.0.4'
+    androidxCore = '1.6.0'
+    androidxAppcompat = '1.3.1'
+    androidxConstraintlayout = '2.1.1'
+    androidxSwipeToRefresh = '1.1.0'
     androidXpreferences = '1.1.1'
     androidXfragment = '1.3.6'
+
+    googleMaterial = '1.4.0'
 
     hiltCoreVersion = '2.33-beta'
     hiltCompilerVersion = '1.0.0-alpha03'

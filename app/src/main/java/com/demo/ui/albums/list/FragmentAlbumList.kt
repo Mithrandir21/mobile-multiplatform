@@ -39,13 +39,16 @@ class FragmentAlbumList : BaseFragment<FragmentAlbumListBinding>(R.layout.fragme
         )
         viewBinding.albumList.addItemDecoration(spacingDecoration)
         viewBinding.albumList.adapter = adapter
+        viewBinding.albumListContainer.setOnRefreshListener {
+            viewModel.refreshAlbums()
+        }
 
         viewModel.observeErrors().observe(viewLifecycleOwner) { (throwable, _) ->
             Toast.makeText(requireContext(), "An error occurred: ${throwable.message}", Toast.LENGTH_LONG).show()
         }
 
         viewModel.observeProgress().observe(viewLifecycleOwner) { (loading, _) ->
-            viewBinding.albumListProgressBar.isVisible = loading
+            viewBinding.albumListContainer.isRefreshing = loading
         }
 
         viewModel.observeViewData().observe(viewLifecycleOwner) { data ->

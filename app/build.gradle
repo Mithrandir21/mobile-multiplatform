@@ -111,6 +111,7 @@ dependencies {
     implementation "androidx.core:core-ktx:$androidxCore"
     implementation "androidx.appcompat:appcompat:$androidxAppcompat"
     implementation "androidx.constraintlayout:constraintlayout:$androidxConstraintlayout"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$androidxSwipeToRefresh"
     implementation "androidx.preference:preference-ktx:$androidXpreferences"
     implementation "androidx.fragment:fragment-ktx:$androidXfragment"
     debugImplementation "androidx.fragment:fragment-testing:$androidXfragment"
