@@ -23,4 +23,9 @@ interface AlbumsRepository {
      */
     fun refreshAlbums(): Completable
 
+    /**
+     * [Completable] action that attempts to refresh the data available to the Repository for a specific Album ID.
+     */
+    fun refreshAlbum(albumId: Int): Completable
+
 }

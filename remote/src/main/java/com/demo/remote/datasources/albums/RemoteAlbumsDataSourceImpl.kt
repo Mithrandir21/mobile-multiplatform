@@ -4,6 +4,7 @@ import com.demo.remote.api.AlbumApi
 import com.demo.remote.api.models.RemoteAlbum
 import com.demo.remote.exceptions.RemoteExceptionTransformer
 import com.demo.remote.logic.transformKnownErrors
+import io.reactivex.rxjava3.core.Maybe
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
 
@@ -17,5 +18,9 @@ internal class RemoteAlbumsDataSourceImpl @Inject constructor(
 
     override fun getAlbums(): Single<List<RemoteAlbum>> =
         storesApi.getAlbums()
+            .transformKnownErrors(remoteExceptionTransformer)
+
+    override fun getAlbum(albumId: Int): Maybe<RemoteAlbum> =
+        storesApi.getAlbum(albumId)
             .transformKnownErrors(remoteExceptionTransformer)
 }

@@ -33,4 +33,10 @@ internal class AlbumsRepositoryImpl @Inject constructor(
             .map { it.toAlbum() }
             .toList()
             .flatMapCompletable { Completable.fromAction { albumDao.clearExistingAndAdd(it) } }
+
+    override fun refreshAlbum(albumId: Int): Completable =
+        remoteAlbumsDataSource.getAlbum(albumId)
+            .toObservable()
+            .map { it.toAlbum() }
+            .flatMapCompletable { albumDao.addAlbumCompletable(it) }
 }

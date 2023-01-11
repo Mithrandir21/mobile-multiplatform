@@ -9,7 +9,9 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
+import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
+import io.reactivex.rxjava3.core.Maybe
 import io.reactivex.rxjava3.core.Single
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -94,5 +96,25 @@ class AlbumsRepositoryImplTest {
 
         verify(remoteAlbumsDataSource, times(1)).getAlbums()
         verify(albumDao, times(1)).clearExistingAndAdd(albums)
+    }
+
+    @Test
+    fun `test refresh album data`() {
+        val albumId = 1
+        val remoteAlbum = RemoteAlbum(albumId, 2, "Title")
+        val album = remoteAlbum.toAlbum()
+
+        whenever(remoteAlbumsDataSource.getAlbum(albumId)).thenReturn(Maybe.just(remoteAlbum))
+        whenever(albumDao.addAlbumCompletable(album)).thenReturn(Completable.complete())
+
+        AlbumsRepositoryImpl(albumDao, remoteAlbumsDataSource)
+            .refreshAlbum(albumId)
+            .test()
+            .assertNoErrors()
+            .assertComplete()
+
+
+        verify(remoteAlbumsDataSource, times(1)).getAlbum(albumId)
+        verify(albumDao, times(1)).addAlbumCompletable(album)
     }
 }

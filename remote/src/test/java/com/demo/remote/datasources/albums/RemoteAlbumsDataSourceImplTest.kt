@@ -4,6 +4,7 @@ import com.demo.remote.api.AlbumApi
 import com.demo.remote.api.models.RemoteAlbum
 import com.demo.remote.exceptions.RemoteExceptionTransformer
 import com.nhaarman.mockitokotlin2.*
+import io.reactivex.rxjava3.core.Maybe
 import io.reactivex.rxjava3.core.Single
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -56,5 +57,23 @@ class RemoteAlbumsDataSourceImplTest {
 
         verify(exceptionTransformer, times(1)).transformApiException(remoteException)
         verify(albumApi, times(1)).getAlbums()
+    }
+
+    @Test
+    fun `test get single album successfully`() {
+        val albumId = 1
+        val mockAlbum: RemoteAlbum = mock()
+
+        whenever(albumApi.getAlbum(albumId)).thenReturn(Maybe.just(mockAlbum))
+
+        RemoteAlbumsDataSourceImpl(albumApi, exceptionTransformer)
+            .getAlbum(albumId)
+            .test()
+            .assertNoErrors()
+            .assertComplete()
+            .assertValue { it == mockAlbum }
+
+        verifyNoMoreInteractions(exceptionTransformer)
+        verify(albumApi, times(1)).getAlbum(albumId)
     }
 }

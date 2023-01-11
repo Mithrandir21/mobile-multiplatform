@@ -1,6 +1,7 @@
 package com.demo.remote.datasources.albums
 
 import com.demo.remote.api.models.RemoteAlbum
+import io.reactivex.rxjava3.core.Maybe
 import io.reactivex.rxjava3.core.Single
 
 /**
@@ -9,5 +10,7 @@ import io.reactivex.rxjava3.core.Single
 interface RemoteAlbumsDataSource {
 
     fun getAlbums(): Single<List<RemoteAlbum>>
+
+    fun getAlbum(albumId: Int): Maybe<RemoteAlbum>
 
 }
