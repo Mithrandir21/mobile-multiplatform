@@ -44,19 +44,29 @@ android {
         }
     }
 
-    flavorDimensions 'variant'
+    flavorDimensions 'client'
     productFlavors {
-        core {
-            dimension "variant"
+        demo {
+            dimension "client"
+
+            missingDimensionStrategy 'variant', 'core'
         }
-        deviation {
-            dimension "variant"
+        clientA {
+            dimension "client"
+
+            missingDimensionStrategy 'variant', 'deviation'
+        }
+        clientB {
+            dimension "client"
+
+            missingDimensionStrategy 'variant', 'deviation'
         }
     }
 }
 
 dependencies {
     implementation project(path: ':domain')
+    implementation project(path: ':theming')
 
     // Navigation Component
     implementation "androidx.navigation:navigation-fragment-ktx:$navComponent"
