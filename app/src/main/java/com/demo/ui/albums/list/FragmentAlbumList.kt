@@ -3,7 +3,6 @@ package com.demo.ui.albums.list
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.core.view.isVisible
 import com.demo.R
 import com.demo.base.BaseFragment
 import com.demo.databinding.FragmentAlbumListBinding

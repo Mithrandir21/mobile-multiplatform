@@ -33,7 +33,7 @@ class RemotePreferencesFragment : BasePreferenceFragment(R.xml.developer_prefere
             }
         }
 
-        viewModel.observeProgress().observe(viewLifecycleOwner) { (loading, type) ->
+        viewModel.observeProgress().observe(viewLifecycleOwner) { (_, type) ->
             when (type) {
                 ActionType.LoadingRemoteEnvironment -> Unit
                 ActionType.SetRemoteEnvironment -> Unit

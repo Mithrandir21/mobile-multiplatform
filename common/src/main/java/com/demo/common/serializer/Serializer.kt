@@ -1,11 +1,8 @@
 package com.demo.common.serializer
 
 import kotlinx.serialization.DeserializationStrategy
-import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.SerializationStrategy
 import kotlinx.serialization.serializer
-import java.lang.reflect.ParameterizedType
-import kotlin.reflect.KClass
 
 /**
  * Serializer class that facilitates Serialization/Deserialization.
