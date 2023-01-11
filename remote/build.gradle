@@ -3,9 +3,11 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlinx-serialization'
+    id 'org.jetbrains.kotlinx.kover'
 }
 
 apply from: '../versions.gradle'
+apply from: '../testing.gradle'
 
 android {
     compileSdkVersion compileSdkToApiVersion

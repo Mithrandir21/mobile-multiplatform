@@ -1,0 +1,28 @@
+android {
+    testOptions {
+        unitTests {
+            // Enables unit tests to use Android resources, assets, and manifests.
+            includeAndroidResources = true
+        }
+
+        unitTests.all {
+            testLogging {
+                events "passed", "skipped", "failed", "standardOut", "standardError"
+
+                // Makes sure that all tests are run even if any fail
+                outputs.upToDateWhen { false }
+
+                // Makes sure that standard output is shown in logs
+                showStandardStreams = true
+            }
+        }
+    }
+}
+
+kover {
+    filters {
+        classes {
+            excludes.addAll(getKoverExclusionList())
+        }
+    }
+}
