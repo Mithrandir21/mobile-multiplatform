@@ -3,10 +3,12 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'org.jetbrains.kotlinx.kover'
     id 'androidx.navigation.safeargs.kotlin'
 }
 
 apply from: '../../versions.gradle'
+apply from: '../../testing.gradle'
 
 android {
     compileSdkVersion compileSdkToApiVersion
