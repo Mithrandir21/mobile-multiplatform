@@ -18,16 +18,6 @@ abstract class LoggingBaseActivity : AppCompatActivity() {
     lateinit var logger: Logger
 
 
-    override fun onCreateView(parent: View?, name: String, context: Context, attrs: AttributeSet): View? {
-        logger.log { "${this::class.java} - onCreateView #1" }
-        return super.onCreateView(parent, name, context, attrs)
-    }
-
-    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
-        logger.log { "${this::class.java} - onCreateView #2" }
-        return super.onCreateView(name, context, attrs)
-    }
-
     override fun onConfigurationChanged(newConfig: Configuration) {
         logger.log { "${this::class.java} - onConfigurationChanged" }
         super.onConfigurationChanged(newConfig)
@@ -96,11 +86,6 @@ abstract class LoggingBaseActivity : AppCompatActivity() {
     override fun onBackPressed() {
         logger.log { "${this::class.java} - onBackPressed" }
         super.onBackPressed()
-    }
-
-    override fun invalidateOptionsMenu() {
-        logger.log { "${this::class.java} - invalidateOptionsMenu" }
-        super.invalidateOptionsMenu()
     }
 
     override fun finish() {

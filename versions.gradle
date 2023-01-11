@@ -1,10 +1,10 @@
 ext {
-    compileSdkToApiVersion = 30
+    compileSdkToApiVersion = 31
     minSdkToApiVersion = 24
     targetSdkToApiVersion = 30
     buildToolVersion = '30.0.3'
 
-    kotlinVersion = '1.4.32'
+    kotlinVersion = '1.7.10'
     kotlinSerialization = '1.0.1'
 
     androidxCore = '1.6.0'
@@ -16,7 +16,7 @@ ext {
 
     googleMaterial = '1.4.0'
 
-    hiltCoreVersion = '2.33-beta'
+    hiltCoreVersion = '2.43.2'
     hiltCompilerVersion = '1.0.0-alpha03'
 
     retrofit = '2.9.0'
@@ -34,7 +34,7 @@ ext {
     rxJava = '3.0.1'
     rxJavaAndroid = '3.0.0'
 
-    navComponent = '2.3.5'
+    navComponent = '2.5.1'
 
 
     junit = '4.13.2'
