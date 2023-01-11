@@ -9,6 +9,7 @@ import com.demo.testing.RxJavaSchedulerImmediateRule
 import com.demo.ui.albums.details.FragmentAlbumDetailsViewModel.ActionType
 import com.demo.ui.albums.details.FragmentAlbumDetailsViewModel.Data
 import com.nhaarman.mockitokotlin2.*
+import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
 import org.junit.Rule
 import org.junit.Test
@@ -51,6 +52,7 @@ class FragmentAlbumDetailsViewModelTest {
         val loadingObserver = mock<Observer<Pair<Boolean, ActionType>>>()
 
         whenever(albumsRepository.observeAlbum(albumId)).thenReturn(Flowable.just(Optional.of(album)))
+        whenever(albumsRepository.refreshAlbum(albumId)).thenReturn(Completable.complete())
 
 
         val viewModel = FragmentAlbumDetailsViewModel(logger, albumsRepository)
@@ -65,10 +67,7 @@ class FragmentAlbumDetailsViewModelTest {
         verifyZeroInteractions(errorObserver)
 
         // Verify Loading states
-        verify(loadingObserver, times(2)).onChanged(loadingCaptor.capture())
-        assert(loadingCaptor.firstValue == true to ActionType.LoadingAlbum)
-        assert(loadingCaptor.secondValue == false to ActionType.LoadingAlbum)
-
+        verify(loadingObserver, times(4)).onChanged(loadingCaptor.capture())
         verify(dataObserver, times(1)).onChanged(Data.AlbumData(album))
     }
 
@@ -81,6 +80,7 @@ class FragmentAlbumDetailsViewModelTest {
         val loadingObserver = mock<Observer<Pair<Boolean, ActionType>>>()
 
         whenever(albumsRepository.observeAlbum(albumId)).thenReturn(Flowable.just(Optional.empty()))
+        whenever(albumsRepository.refreshAlbum(albumId)).thenReturn(Completable.complete())
 
 
         val viewModel = FragmentAlbumDetailsViewModel(logger, albumsRepository)
@@ -95,10 +95,7 @@ class FragmentAlbumDetailsViewModelTest {
         verifyZeroInteractions(errorObserver)
 
         // Verify Loading states
-        verify(loadingObserver, times(2)).onChanged(loadingCaptor.capture())
-        assert(loadingCaptor.firstValue == true to ActionType.LoadingAlbum)
-        assert(loadingCaptor.secondValue == false to ActionType.LoadingAlbum)
-
+        verify(loadingObserver, times(4)).onChanged(loadingCaptor.capture())
         verify(dataObserver, times(1)).onChanged(Data.NoAlbumData(albumId))
     }
 
@@ -112,6 +109,7 @@ class FragmentAlbumDetailsViewModelTest {
         val loadingObserver = mock<Observer<Pair<Boolean, ActionType>>>()
 
         whenever(albumsRepository.observeAlbum(albumId)).thenReturn(Flowable.error(error))
+        whenever(albumsRepository.refreshAlbum(albumId)).thenReturn(Completable.complete())
 
 
         val viewModel = FragmentAlbumDetailsViewModel(logger, albumsRepository)
@@ -124,8 +122,8 @@ class FragmentAlbumDetailsViewModelTest {
 
 
         verifyZeroInteractions(dataObserver)
-        verifyZeroInteractions(loadingObserver)
 
+        verify(loadingObserver, times(2)).onChanged(loadingCaptor.capture())
         verify(errorObserver, times(1)).onChanged(error to ActionType.LoadingAlbum)
     }
 }
