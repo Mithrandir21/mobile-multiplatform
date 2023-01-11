@@ -15,7 +15,7 @@ apply from: '../testing.gradle'
 // semantic versioning, from which both versionCode and versionName is derived
 def versionMajor = 0 // 1 space
 def versionMinor = 0 // 2 spaces
-def versionPatch = 3 // 2 spaces
+def versionPatch = 4 // 2 spaces
 def versionBuild = 0 // 2 spaces
 
 android {
