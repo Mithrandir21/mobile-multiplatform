@@ -13,7 +13,7 @@ apply from: '../versions.gradle'
 // semantic versioning, from which both versionCode and versionName is derived
 def versionMajor = 0 // 1 space
 def versionMinor = 0 // 2 spaces
-def versionPatch = 1 // 2 spaces
+def versionPatch = 2 // 2 spaces
 def versionBuild = 0 // 2 spaces
 
 android {
