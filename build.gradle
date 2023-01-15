@@ -5,7 +5,6 @@ buildscript {
     ext.safe_args = '2.5.1'
     repositories {
         google()
-        jcenter()
         mavenCentral()
         maven { url 'https://jitpack.io' }
     }
@@ -31,7 +30,6 @@ tasks.sonarqube.dependsOn ":koverMergedReport"
 allprojects {
     repositories {
         google()
-        jcenter()
         mavenCentral()
         maven { url 'https://jitpack.io' }
     }

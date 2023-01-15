@@ -1,8 +1,6 @@
 package com.demo.base
 
 import androidx.annotation.LayoutRes
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.viewbinding.ViewBinding
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -17,13 +15,6 @@ abstract class BaseFragment<T : ViewBinding>(@LayoutRes layout: Int) : LoggingBa
      * Disposed when [onDestroy] is called.
      */
     private val compositeDisposable = CompositeDisposable()
-
-    /**
-     * Attempts to return the desired (type [VM]) [ViewModel].
-     *
-     * If the given [VM] [ViewModel] cannot be provided, a [RuntimeException] will be thrown.
-     */
-    protected inline fun <reified VM : ViewModel> viewModel(): VM = ViewModelProvider(this).get(VM::class.java)
 
     protected fun getBaseActivity(): BaseActivity<*> = requireNotNull(requireActivity() as BaseActivity<*>) { "Activity must not be null!" }
 

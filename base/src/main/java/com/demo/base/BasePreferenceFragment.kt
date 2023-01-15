@@ -3,19 +3,10 @@ package com.demo.base
 import android.os.Bundle
 import androidx.annotation.StringRes
 import androidx.annotation.XmlRes
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 
 abstract class BasePreferenceFragment(@XmlRes val pref: Int) : PreferenceFragmentCompat() {
-
-    /**
-     * Attempts to return the desired (type [VM]) [ViewModel].
-     *
-     * If the given [VM] [ViewModel] cannot be provided, a [RuntimeException] will be thrown.
-     */
-    protected inline fun <reified VM : ViewModel> viewModel(): VM = ViewModelProvider(this).get(VM::class.java)
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(pref, rootKey)

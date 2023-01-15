@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.demo.R
 import com.demo.base.BaseFragment
@@ -15,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class FragmentAlbumDetails : BaseFragment<FragmentAlbumDetailsBinding>(R.layout.fragment_album_details) {
 
-    private val viewModel: FragmentAlbumDetailsViewModel by lazy { viewModel() }
+    private val viewModel: FragmentAlbumDetailsViewModel by viewModels()
 
     private val navArgs by navArgs<FragmentAlbumDetailsArgs>()
 
