@@ -36,8 +36,6 @@ class RemoteExternalExceptionsTest {
 
 
     private fun <T> test(code: Int, expected: T) {
-        val msg = "Exception Message"
-
         val exception: HttpException = mock()
 
         whenever(exception.code()).thenReturn(code)

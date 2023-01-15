@@ -1,9 +1,10 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
-    id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'org.jetbrains.kotlinx.kover'
+
+    id 'kotlin-kapt'
 }
 
 apply from: '../versions.gradle'
@@ -45,6 +46,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
         }
     }
+    namespace 'com.demo.base'
 }
 
 dependencies {

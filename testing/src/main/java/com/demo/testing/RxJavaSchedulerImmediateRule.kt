@@ -1,6 +1,5 @@
 package com.demo.testing
 
-import androidx.annotation.NonNull
 import io.reactivex.rxjava3.android.plugins.RxAndroidPlugins
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.disposables.Disposable
@@ -15,14 +14,14 @@ import java.util.concurrent.TimeUnit
 class RxJavaSchedulerImmediateRule : TestWatcher() {
 
     private val immediate = object : Scheduler() {
-        override fun scheduleDirect(@NonNull run: Runnable): Disposable = super.scheduleDirect(run, 0, TimeUnit.MILLISECONDS)
+        override fun scheduleDirect(run: Runnable): Disposable = super.scheduleDirect(run, 0, TimeUnit.MILLISECONDS)
         override fun createWorker(): Worker =
             ExecutorScheduler.ExecutorWorker(object : ScheduledThreadPoolExecutor(1) {
                 override fun execute(runnable: Runnable) = runnable.run()
             }, true, true)
     }
 
-    override fun starting(description: Description?) {
+    override fun starting(description: Description) {
         super.starting(description)
 
         RxJavaPlugins.setInitIoSchedulerHandler { immediate }

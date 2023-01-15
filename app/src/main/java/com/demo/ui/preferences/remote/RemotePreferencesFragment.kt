@@ -3,6 +3,7 @@ package com.demo.ui.preferences.remote
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.preference.Preference
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.demo.R
@@ -14,7 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class RemotePreferencesFragment : BasePreferenceFragment(R.xml.developer_preferences) {
 
-    private val viewModel: RemotePreferencesViewModel by lazy { viewModel() }
+    private val viewModel: RemotePreferencesViewModel by viewModels()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

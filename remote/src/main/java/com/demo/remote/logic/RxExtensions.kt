@@ -8,17 +8,17 @@ internal fun Completable.transformKnownErrors(errorTransformer: RemoteExceptionT
     this.onErrorResumeNext { throwable -> Completable.error(errorTransformer.transformApiException(throwable)) }
 
 /** Attempts to transform any known exception into a pre-defined exception. Otherwise, original exception is kept. */
-internal fun <T> Single<T>.transformKnownErrors(errorTransformer: RemoteExceptionTransformer): Single<T> =
+internal fun <T : Any> Single<T>.transformKnownErrors(errorTransformer: RemoteExceptionTransformer): Single<T> =
     this.onErrorResumeNext { throwable -> Single.error(errorTransformer.transformApiException(throwable)) }
 
 /** Attempts to transform any known exception into a pre-defined exception. Otherwise, original exception is kept. */
-internal fun <T> Maybe<T>.transformKnownErrors(errorTransformer: RemoteExceptionTransformer): Maybe<T> =
+internal fun <T : Any> Maybe<T>.transformKnownErrors(errorTransformer: RemoteExceptionTransformer): Maybe<T> =
     this.onErrorResumeNext { throwable -> Maybe.error(errorTransformer.transformApiException(throwable)) }
 
 /** Attempts to transform any known exception into a pre-defined exception. Otherwise, original exception is kept. */
-internal fun <T> Observable<T>.transformKnownErrors(errorTransformer: RemoteExceptionTransformer): Observable<T> =
+internal fun <T : Any> Observable<T>.transformKnownErrors(errorTransformer: RemoteExceptionTransformer): Observable<T> =
     this.onErrorResumeNext { throwable -> Observable.error(errorTransformer.transformApiException(throwable)) }
 
 /** Attempts to transform any known exception into a pre-defined exception. Otherwise, original exception is kept. */
-internal fun <T> Flowable<T>.transformKnownErrors(errorTransformer: RemoteExceptionTransformer): Flowable<T> =
+internal fun <T : Any> Flowable<T>.transformKnownErrors(errorTransformer: RemoteExceptionTransformer): Flowable<T> =
     this.onErrorResumeNext { throwable -> Flowable.error(errorTransformer.transformApiException(throwable)) }

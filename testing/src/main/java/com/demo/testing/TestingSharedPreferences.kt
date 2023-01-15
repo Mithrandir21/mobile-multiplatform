@@ -119,13 +119,13 @@ class TestingSharedPreferences : SharedPreferences {
     class TestingEditor(private val applyAction: TestingEditorApplyAction) : SharedPreferences.Editor {
 
         // Command to clear list
-        var commitClear = false
+        private var commitClear = false
 
         /** Key/Object to be added map. */
-        var addMap: MutableMap<String, Any?> = ConcurrentHashMap()
+        private var addMap: MutableMap<String, Any?> = ConcurrentHashMap()
 
         /** Keys to be removed list. */
-        var removeList: MutableList<String> = ArrayList()
+        private var removeList: MutableList<String> = ArrayList()
 
 
         override fun putString(key: String, value: String?): SharedPreferences.Editor {
@@ -134,7 +134,7 @@ class TestingSharedPreferences : SharedPreferences {
         }
 
         override fun putStringSet(key: String, values: MutableSet<String>?): SharedPreferences.Editor {
-            addMap[key] = HashSet(values)
+            addMap[key] = values
             return this
         }
 
