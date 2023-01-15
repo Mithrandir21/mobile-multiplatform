@@ -1,9 +1,10 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
-    id 'kotlin-kapt'
     id 'kotlinx-serialization'
     id 'org.jetbrains.kotlinx.kover'
+
+    id 'kotlin-kapt'
 }
 
 apply from: '../versions.gradle'
@@ -47,6 +48,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
         }
     }
+    namespace 'com.demo.remote'
 }
 
 dependencies {

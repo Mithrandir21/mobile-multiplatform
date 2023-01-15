@@ -1,9 +1,10 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
-    id 'kotlin-kapt'
     id 'org.jetbrains.kotlinx.kover'
     id 'androidx.navigation.safeargs.kotlin'
+
+    id 'kotlin-kapt'
 }
 
 apply from: '../versions.gradle'
@@ -64,6 +65,7 @@ android {
             missingDimensionStrategy 'variant', 'deviation'
         }
     }
+    namespace 'com.demo.navigation'
 }
 
 dependencies {

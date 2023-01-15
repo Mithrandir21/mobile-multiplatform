@@ -11,7 +11,7 @@ fun Completable.debugLog(logger: Logger, identification: String = System.current
     .doAfterTerminate { logger.log(LogLevel.DEBUG) { "Completable onAfterTerminate ($identification)" } }
     .doFinally { logger.log(LogLevel.DEBUG) { "Completable onFinally ($identification)" } }
 
-fun <T> Single<T>.debugLog(logger: Logger, identification: String = System.currentTimeMillis().toString()): Single<T> = this
+fun <T : Any> Single<T>.debugLog(logger: Logger, identification: String = System.currentTimeMillis().toString()): Single<T> = this
     .doOnSubscribe { logger.log(LogLevel.DEBUG) { "Single onSubscribe ($identification)" } }
     .doOnSuccess { logger.log(LogLevel.DEBUG) { "Single onSuccess ($identification) - Data: $it" } }
     .doOnError { logger.log(LogLevel.ERROR, it) { "Single onError ($identification) - Error: $it" } }
@@ -20,7 +20,7 @@ fun <T> Single<T>.debugLog(logger: Logger, identification: String = System.curre
     .doAfterTerminate { logger.log(LogLevel.DEBUG) { "Single onAfterTerminate ($identification)" } }
     .doFinally { logger.log(LogLevel.DEBUG) { "Single onFinally ($identification)" } }
 
-fun <T> Maybe<T>.debugLog(logger: Logger, identification: String = System.currentTimeMillis().toString()): Maybe<T> = this
+fun <T : Any> Maybe<T>.debugLog(logger: Logger, identification: String = System.currentTimeMillis().toString()): Maybe<T> = this
     .doOnSubscribe { logger.log(LogLevel.DEBUG) { "Maybe onSubscribe ($identification)" } }
     .doOnSuccess { logger.log(LogLevel.DEBUG) { "Maybe onSuccess ($identification) - Data: $it" } }
     .doOnComplete { logger.log(LogLevel.DEBUG) { "Maybe onComplete ($identification)" } }
@@ -30,7 +30,7 @@ fun <T> Maybe<T>.debugLog(logger: Logger, identification: String = System.curren
     .doAfterTerminate { logger.log(LogLevel.DEBUG) { "Maybe onAfterTerminate ($identification)" } }
     .doFinally { logger.log(LogLevel.DEBUG) { "Maybe onFinally ($identification)" } }
 
-fun <T> Observable<T>.debugLog(logger: Logger, identification: String = System.currentTimeMillis().toString()): Observable<T> = this
+fun <T : Any> Observable<T>.debugLog(logger: Logger, identification: String = System.currentTimeMillis().toString()): Observable<T> = this
     .doOnSubscribe { logger.log(LogLevel.DEBUG) { "Observable onSubscribe ($identification)" } }
     .doOnNext { logger.log(LogLevel.DEBUG) { "Observable onNext ($identification) - Data: $it" } }
     .doOnComplete { logger.log(LogLevel.DEBUG) { "Observable onComplete ($identification)" } }
@@ -41,7 +41,7 @@ fun <T> Observable<T>.debugLog(logger: Logger, identification: String = System.c
     .doAfterTerminate { logger.log(LogLevel.DEBUG) { "Observable onAfterTerminate ($identification)" } }
     .doFinally { logger.log(LogLevel.DEBUG) { "Observable onFinally ($identification)" } }
 
-fun <T> Flowable<T>.debugLog(logger: Logger, identification: String = System.currentTimeMillis().toString()): Flowable<T> = this
+fun <T : Any> Flowable<T>.debugLog(logger: Logger, identification: String = System.currentTimeMillis().toString()): Flowable<T> = this
     .doOnSubscribe { logger.log(LogLevel.DEBUG) { "Flowable onSubscribe ($identification)" } }
     .doOnNext { logger.log(LogLevel.DEBUG) { "Flowable onNext ($identification) - Data: $it" } }
     .doOnComplete { logger.log(LogLevel.DEBUG) { "Flowable onComplete ($identification)" } }

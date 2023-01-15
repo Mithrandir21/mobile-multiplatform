@@ -16,11 +16,8 @@ class RemoteExceptionTransformerImplTest {
     @Test
     fun `test HttpException transformation`() {
         val code = 400
-        val error = "Server HTTP Exception"
 
         val exception: HttpException = mock()
-        val response: Response<*> = mock()
-        val responseBody: ResponseBody = mock()
 
         val expected = RemoteHttpException.BadRequest
 
