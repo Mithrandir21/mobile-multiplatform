@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Demo.Default">
         <activity android:name="com.demo.ui.main.MainActivity"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

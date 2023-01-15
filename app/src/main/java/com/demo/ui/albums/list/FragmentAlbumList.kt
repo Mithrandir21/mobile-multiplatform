@@ -3,6 +3,7 @@ package com.demo.ui.albums.list
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import com.demo.R
 import com.demo.base.BaseFragment
 import com.demo.databinding.FragmentAlbumListBinding
@@ -16,7 +17,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class FragmentAlbumList : BaseFragment<FragmentAlbumListBinding>(R.layout.fragment_album_list), AlbumAdapterInterface {
 
-    private val viewModel: FragmentAlbumListViewModel by lazy { viewModel() }
+    private val viewModel: FragmentAlbumListViewModel by viewModels()
 
     private val adapter = AlbumAdapter(this)
 

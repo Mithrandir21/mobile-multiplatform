@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.annotation.NonNull
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.demo.R
@@ -40,7 +39,7 @@ class AlbumAdapter(private val listener: AlbumAdapterInterface) : RecyclerView.A
 
     override fun getItemCount(): Int = data.size
 
-    class RecyclerViewHolder(@NonNull itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class RecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val intermediary: TextView = itemView.findViewById(R.id.albumIntermediary)
         val albumID: TextView = itemView.findViewById(R.id.albumIdLabel)
         val userID: TextView = itemView.findViewById(R.id.albumUserIdLabel)
