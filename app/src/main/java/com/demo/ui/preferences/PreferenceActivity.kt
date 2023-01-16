@@ -45,7 +45,7 @@ class PreferenceActivity : LoggingBaseActivity(), PreferenceFragmentCompat.OnPre
 
         // Instantiate the new Fragment
         val args = pref.extras
-        val fragment = supportFragmentManager.fragmentFactory.instantiate(classLoader, pref.fragment)
+        val fragment = supportFragmentManager.fragmentFactory.instantiate(classLoader, requireNotNull(pref.fragment))
         fragment.arguments = args
         @Suppress("DEPRECATION")
         fragment.setTargetFragment(caller, 0)
