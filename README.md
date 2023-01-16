@@ -21,19 +21,19 @@ Deep link schema: 'demo://album/[albumID]'
 
 # External Tools
 ## Code Quality
-[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=_mobile-multiplatform)](https://sonarcloud.io/summary/new_code?id=_mobile-multiplatform)
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=Mithrandir21_mobile-multiplatform)](https://sonarcloud.io/summary/new_code?id=Mithrandir21_mobile-multiplatform)
 
 
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=_mobile-multiplatform&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=_mobile-multiplatform)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=_mobile-multiplatform&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=_mobile-multiplatform)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=_mobile-multiplatform&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=_mobile-multiplatform)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=_mobile-multiplatform&metric=bugs)](https://sonarcloud.io/summary/new_code?id=_mobile-multiplatform)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=_mobile-multiplatform&metric=coverage)](https://sonarcloud.io/summary/new_code?id=_mobile-multiplatform)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=_mobile-multiplatform&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=_mobile-multiplatform)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=_mobile-multiplatform&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=_mobile-multiplatform)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=_mobile-multiplatform&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=_mobile-multiplatform)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=_mobile-multiplatform&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=_mobile-multiplatform)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=_mobile-multiplatform&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=_mobile-multiplatform)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Mithrandir21_mobile-multiplatform&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=Mithrandir21_mobile-multiplatform)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Mithrandir21_mobile-multiplatform&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Mithrandir21_mobile-multiplatform)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Mithrandir21_mobile-multiplatform&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Mithrandir21_mobile-multiplatform)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Mithrandir21_mobile-multiplatform&metric=bugs)](https://sonarcloud.io/summary/new_code?id=Mithrandir21_mobile-multiplatform)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Mithrandir21_mobile-multiplatform&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Mithrandir21_mobile-multiplatform)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=Mithrandir21_mobile-multiplatform&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=Mithrandir21_mobile-multiplatform)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Mithrandir21_mobile-multiplatform&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=Mithrandir21_mobile-multiplatform)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=Mithrandir21_mobile-multiplatform&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=Mithrandir21_mobile-multiplatform)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Mithrandir21_mobile-multiplatform&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=Mithrandir21_mobile-multiplatform)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Mithrandir21_mobile-multiplatform&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=Mithrandir21_mobile-multiplatform)
 
 Analysis of the codebase, including finding known issues, bugs, security issues, unit test code coverage, and much more.
 
