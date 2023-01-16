@@ -43,7 +43,7 @@ task clean(type: Delete) {
 // Sonar Cloud Setup
 sonarqube {
     properties {
-        property "sonar.projectKey", "Mithrandir21_demo"
+        property "sonar.projectKey", "Mithrandir21_mobile-multiplatform"
         property "sonar.organization", "mithrandir"
         property "sonar.host.url", "https://sonarcloud.io"
 
